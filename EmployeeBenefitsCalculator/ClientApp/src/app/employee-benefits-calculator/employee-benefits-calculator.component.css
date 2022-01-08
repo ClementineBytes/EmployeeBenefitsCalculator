@@ -1,0 +1,11 @@
+.form-container, .results-container {
+    margin: 2em;
+}
+
+label {
+    margin-right: 1em;
+}
+
+button {
+    margin: 1em;
+}

@@ -1,0 +1,15 @@
+C:\Users\kclem\source\repos\EmployeeBenefitsCalculator\Services\bin\Debug\net5.0\Services.deps.json
+C:\Users\kclem\source\repos\EmployeeBenefitsCalculator\Services\bin\Debug\net5.0\Services.dll
+C:\Users\kclem\source\repos\EmployeeBenefitsCalculator\Services\bin\Debug\net5.0\ref\Services.dll
+C:\Users\kclem\source\repos\EmployeeBenefitsCalculator\Services\bin\Debug\net5.0\Services.pdb
+C:\Users\kclem\source\repos\EmployeeBenefitsCalculator\Services\bin\Debug\net5.0\Models.dll
+C:\Users\kclem\source\repos\EmployeeBenefitsCalculator\Services\bin\Debug\net5.0\Models.pdb
+C:\Users\kclem\source\repos\EmployeeBenefitsCalculator\Services\obj\Debug\net5.0\Services.csproj.AssemblyReference.cache
+C:\Users\kclem\source\repos\EmployeeBenefitsCalculator\Services\obj\Debug\net5.0\Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kclem\source\repos\EmployeeBenefitsCalculator\Services\obj\Debug\net5.0\Services.AssemblyInfoInputs.cache
+C:\Users\kclem\source\repos\EmployeeBenefitsCalculator\Services\obj\Debug\net5.0\Services.AssemblyInfo.cs
+C:\Users\kclem\source\repos\EmployeeBenefitsCalculator\Services\obj\Debug\net5.0\Services.csproj.CoreCompileInputs.cache
+C:\Users\kclem\source\repos\EmployeeBenefitsCalculator\Services\obj\Debug\net5.0\Services.csproj.CopyComplete
+C:\Users\kclem\source\repos\EmployeeBenefitsCalculator\Services\obj\Debug\net5.0\Services.dll
+C:\Users\kclem\source\repos\EmployeeBenefitsCalculator\Services\obj\Debug\net5.0\ref\Services.dll
+C:\Users\kclem\source\repos\EmployeeBenefitsCalculator\Services\obj\Debug\net5.0\Services.pdb

@@ -1,0 +1,83 @@
+<div class="jumbotron text-center">
+    <h3>Employee Benefits Cost Calculator</h3>
+</div>
+<div class="form-container">
+    <form [formGroup]="employeeForm">
+        <div class="form-input">
+            <label for="employeeFirstName">Employee First Name</label>
+            <input type="text" id="employeeFirstName" formControlName="employeeFirstName">
+        </div>
+        <div *ngIf="employeeForm.controls['employeeFirstName'].invalid && (employeeForm.controls['employeeFirstName'].dirty || employeeForm.controls['employeeFirstName'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="employeeForm.controls['employeeFirstName'].errors.required">
+                Employee first name is required.
+            </div>
+            <div *ngIf="employeeForm.controls['employeeFirstName'].errors.pattern">
+                Employee first name must contain letters only.
+            </div>
+        </div>
+        <div class="form-input">
+            <label for="employeeLastName">Employee Last Name</label>
+            <input type="text" id="employeeLastName" formControlName="employeeLastName">
+        </div>
+        <div *ngIf="employeeForm.controls['employeeLastName'].invalid && (employeeForm.controls['employeeLastName'].dirty || employeeForm.controls['employeeLastName'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="employeeForm.controls['employeeLastName'].errors.required">
+                Employee last name is required.
+            </div>
+            <div *ngIf="employeeForm.controls['employeeLastName'].errors.pattern">
+                Employee last name must contain letters only.
+            </div>
+        </div>
+        <div formArrayName="dependentsForms">
+            <div *ngFor="let dependent of dependents().controls; let dependentIndex=index">
+                <div [formGroupName]="dependentIndex"
+                    style="border: 1px solid grey; padding: 10px; width: 600px; margin: 5px;">
+                    Dependent {{dependentIndex + 1}}
+                    <div class="form-input">
+                        <label for="dependentFirstName">Dependent First Name</label>
+                        <input type="text" id="dependentFirstName" formControlName="dependentFirstName">
+                    </div>
+                    <div *ngIf="dependent.get('dependentFirstName').invalid && (dependent.get('dependentFirstName').dirty || dependent.get('dependentFirstName').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="dependent.get('dependentFirstName').errors.required">
+                        Dependent first name is required.
+                    </div>
+                    <div *ngIf="dependent.get('dependentFirstName').errors.pattern">
+                        Dependent first name must contain letters only.
+                    </div>
+                </div>
+                    <div class="form-input">
+                        <label for="dependentLastName">Dependent Last Name</label>
+                        <input type="text" id="dependentLastName" formControlName="dependentLastName">
+                    </div>
+                    <div *ngIf="dependent.get('dependentLastName').invalid && (dependent.get('dependentLastName').dirty || dependent.get('dependentLastName').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="dependent.get('dependentLastName').errors.required">
+                        Dependent last name is required.
+                    </div>
+                    <div *ngIf="dependent.get('dependentLastName').errors.pattern">
+                        Dependent last name must contain letters only.
+                    </div>
+                </div>
+                <button class="btn btn-danger" (click)="removeDependent(dependentIndex)">Remove</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div>
+        <button class="btn btn-info" (click)="addDependent()">Add Dependent</button>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary" [disabled]="!this.employeeForm.valid"
+            (click)="onSubmit()">Submit</button>
+    </div>
+</div>
+<div *ngIf="costCalculated" class="results-container">
+    <p>
+        <span>Annual Benefits Cost: ${{employee.benefitsCost}}</span>
+    </p>
+    <p>
+        <span>Benefits Cost Per-Paycheck: ${{benefitsCostPerPaycheck}}</span>
+    </p>
+</div>
