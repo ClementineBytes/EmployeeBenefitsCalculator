@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms'
 import { Employee } from '../shared/models/employee.model';
-import { Person } from '../shared/models/person.model';
 import { EmployeeBenefitsService } from '../shared/services/employee-benefits.service';
 
 @Component({
