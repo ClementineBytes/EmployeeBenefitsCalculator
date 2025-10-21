@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Models.Payroll;
 using Services;
 
 namespace EmployeeBenefitsCalculator
@@ -32,7 +33,9 @@ namespace EmployeeBenefitsCalculator
             services.AddMvc();
 
             services.AddControllersWithViews();
+            services.AddScoped<IBenefitsCalculatorFactory, BenefitsCalculatorFactory>();
             services.AddScoped<IEmployeeBenefitsService, EmployeeBenefitsService>();
+           
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
@@ -73,7 +76,8 @@ namespace EmployeeBenefitsCalculator
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseAngularCliServer(npmScript: "start");
+                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+                    //spa.UseAngularCliServer(npmScript: "start");
                 }
             });
         }
