@@ -1,3 +1,5 @@
+using AutoMapper;
+using EmployeeBenefitsCalculator.Mappers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -19,6 +21,16 @@ namespace EmployeeBenefitsCalculator
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MapperProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddMvc();
+
             services.AddControllersWithViews();
             services.AddScoped<IEmployeeBenefitsService, EmployeeBenefitsService>();
             services.AddSpaStaticFiles(configuration =>

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Models.DTO
+﻿namespace Models.DTO
 {
     public class BenefitDTO
     {
-        public decimal Cost { get; set; }
+        public double Cost { get; set; }
     }
 }

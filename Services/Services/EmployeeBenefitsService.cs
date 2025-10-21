@@ -18,7 +18,7 @@ namespace Services
         }
         public Task<BenefitDTO> CalculateBenefitsCost(EmployeeDTO emp)
         {
-            var employee = _mapper.Map<IEmployee>(emp);
+            var employee = _mapper.Map<Employee>(emp);
             var benefitsCalculator = _benefitsCalculatorFactory.Create(employee.CompType);
             var calculatedBenefit = new Benefit();
 

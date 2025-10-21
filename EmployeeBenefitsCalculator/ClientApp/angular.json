@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "EmployeeBenefitsCalculator"
+  "defaultProject": "EmployeeBenefitsCalculator",
+  "cli": {
+    "analytics": false
+  }
 }
