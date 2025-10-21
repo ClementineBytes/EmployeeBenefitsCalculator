@@ -1,19 +1,17 @@
 ﻿using Models.Payroll;
-using System;
 using System.Collections.Generic;
 
-namespace Models
+namespace Models.Employees
 {
-    public class Employee
+    public interface IEmployee
     {
         public int ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public CompensationType CompType => CompensationType.Salary;
+        public CompensationType CompType { get; }
         public Benefit Benefits { get; set; }
         public decimal AnnualSalary { get; set; }
         public int NumberOfPaychecksAYear { get; set; }
         public List<Dependent> Dependents { get; set; }
-        public decimal BenefitsCost { get; set; }
     }
 }

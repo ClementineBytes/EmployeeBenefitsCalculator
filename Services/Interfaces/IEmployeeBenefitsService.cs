@@ -1,10 +1,10 @@
-﻿using Models;
+﻿using Models.DTO;
 using System.Threading.Tasks;
 
 namespace Services
 {
     public interface IEmployeeBenefitsService
     {
-        Task<Employee> CalculateEmployeeBenefitsCost(Employee emp);
+        Task<BenefitDTO> CalculateBenefitsCost(EmployeeDTO emp);
     }
 }

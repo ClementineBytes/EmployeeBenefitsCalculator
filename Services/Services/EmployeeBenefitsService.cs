@@ -1,46 +1,32 @@
-﻿using Models;
+﻿using AutoMapper;
+using Models.DTO;
+using Models.Employees;
+using Models.Payroll;
 using System.Threading.Tasks;
 
 namespace Services
 {
     public class EmployeeBenefitsService : IEmployeeBenefitsService
     {
-        public async Task<Employee> CalculateEmployeeBenefitsCost(Employee emp)
+        private readonly IBenefitsCalculatorFactory _benefitsCalculatorFactory;
+        private readonly IMapper _mapper;
+
+        public EmployeeBenefitsService(IBenefitsCalculatorFactory benefitsCalculatorFactory, IMapper mapper)
         {
-            double annualBenefitsRate = 1000;
-            double dependentsRate = 500;
-            double discountRate = 0.1;
+            _benefitsCalculatorFactory = benefitsCalculatorFactory;
+            _mapper = mapper;
+        }
+        public Task<BenefitDTO> CalculateBenefitsCost(EmployeeDTO emp)
+        {
+            var employee = _mapper.Map<IEmployee>(emp);
+            var benefitsCalculator = _benefitsCalculatorFactory.Create(employee.CompType);
+            var calculatedBenefit = new Benefit();
 
-            double annualBenefitsDiscountAmount = annualBenefitsRate * discountRate;
-            double dependentsDiscountAmount = dependentsRate * discountRate;
+            var cost = benefitsCalculator.CalculateBenefitsCost(employee);
+            calculatedBenefit.Cost = cost;
 
-            double dependentsCost = 0;
-            double annualBenefitsCost = 0;
-
-            if (emp.Dependents != null && emp.Dependents.Count > 0)
-            {
-                foreach (Person dependent in emp.Dependents)
-                {
-                    if (dependent.FirstName.ToUpper().StartsWith("A"))
-                    {
-                        dependentsCost += dependentsRate - dependentsDiscountAmount;
-                    }
-                    else
-                    {
-                        dependentsCost += dependentsRate;
-                    }
-                }
-            }
-            if (emp.FirstName.ToUpper().StartsWith("A"))
-            {
-                annualBenefitsCost = annualBenefitsRate - annualBenefitsDiscountAmount;
-            }
-            else
-            {
-                annualBenefitsCost = annualBenefitsRate;
-            }
-            emp.BenefitsCost = (decimal)(annualBenefitsCost + dependentsCost);
-            return await Task.FromResult(emp);
+            var result = _mapper.Map<BenefitDTO>(calculatedBenefit);
+            return Task.FromResult(result);
         }
     }
 }

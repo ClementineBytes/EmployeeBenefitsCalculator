@@ -1,10 +1,9 @@
 ﻿using Models.Payroll;
-using System;
 using System.Collections.Generic;
 
-namespace Models
+namespace Models.Employees
 {
-    public class Employee
+    public class SalaryEmployee : IEmployee
     {
         public int ID { get; set; }
         public string FirstName { get; set; }
@@ -14,6 +13,6 @@ namespace Models
         public decimal AnnualSalary { get; set; }
         public int NumberOfPaychecksAYear { get; set; }
         public List<Dependent> Dependents { get; set; }
-        public decimal BenefitsCost { get; set; }
+
     }
 }
